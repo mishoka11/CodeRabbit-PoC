@@ -5,4 +5,4 @@ This repository demonstrates a simple GitHub Actions workflow that mimics how an
 ## How It Works
 - On every pull request, the workflow runs static analysis (via Flake8).
 - It then summarizes the findings in a pseudo-AI review comment under "GitHub Actions → Summary".
-- This simulates the behavior of CodeRabbit or Claude Code, giving automated feedback directly in the PR context.
+- This simulates the behavior of CodeRabbit or Claude Code, giving automated feedback directly in the PR context."# Minor update for review test" 
