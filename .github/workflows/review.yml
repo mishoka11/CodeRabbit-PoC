@@ -4,6 +4,12 @@ on:
   pull_request:
     branches: [ main ]
 
+# 👇 Add this block so the Action can write comments
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
   code-review:
     runs-on: ubuntu-latest
