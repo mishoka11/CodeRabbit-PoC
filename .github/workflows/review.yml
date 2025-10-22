@@ -1,0 +1,27 @@
+name: AI Code Review PoC
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run static analysis (Flake8)
+      run: |
+        pip install flake8
+        flake8 src --exit-zero > flake8-report.txt
+        cat flake8-report.txt
+
+    - name: Generate AI-style feedback
+      run: |
+        echo "### 🤖 AI Review Feedback" >> $GITHUB_STEP_SUMMARY
+        echo "Detected $(grep -c 'src/' flake8-report.txt) issues via static analysis." >> $GITHUB_STEP_SUMMARY
+        echo "- Consider adding type hints and docstrings." >> $GITHUB_STEP_SUMMARY
+        echo "- Simplify concatenation using f-strings." >> $GITHUB_STEP_SUMMARY
+        echo "- Follow PEP8 line-length and import ordering conventions." >> $GITHUB_STEP_SUMMARY
